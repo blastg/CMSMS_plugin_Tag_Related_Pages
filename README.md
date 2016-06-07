@@ -1,7 +1,6 @@
 # CMSMS_plugin_Tag_Related_Pages
-<br />
 CMSMS plugin for tagging related pages
-<br />
+
 What does this do?
 
 This plugin will create relations between pages in CMSMS, simply adding one or more tag to the required page.
