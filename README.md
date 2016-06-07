@@ -8,7 +8,7 @@ How to use:
 
 Copy function.tag_related_pages.php file to "/plugins" directory of your site.
 
-Then, in your main theme, add this instruction:
+Then, in your main template, add this instruction:
 
 {$tag="{content block='tag' oneline='true' wysiwyg='false'}" scope=global}
 
