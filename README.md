@@ -1,10 +1,10 @@
 # CMSMS_plugin_Tag_Related_Pages
-CMSMS plugin for tagging related pages
+##CMSMS plugin for tagging related pages
 
-What does this do?
+###What does this do?
 
 This plugin will create relations between pages in [CMS Made Simple](http://www.cmsmadesimple.org/), simply adding one or more tag to the required page.
-How to use:
+###How to use:
 
 Copy function.tag_related_pages.php file to "/plugins" directory of your site.
 
