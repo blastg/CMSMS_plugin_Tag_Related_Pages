@@ -1,6 +1,7 @@
 # CMSMS_plugin_Tag_Related_Pages
 <br />
 CMSMS plugin for tagging related pages
+<br />
 What does this do?
 
 This plugin will create relations between pages in CMSMS, simply adding one or more tag to the required page.
@@ -25,8 +26,6 @@ Create a new content block named related_pages (Layout - Design Manager - Templa
 	{/if}
 	
 
-
-
 Show "related pages" in single pages (or in template) adding this instruction to target page:
 
 {global_content name='related_pages'}
@@ -37,10 +36,6 @@ Add one (or more) comma separated tag(s) in "tag" field of your related pages, f
 
 	sea, vacation, holidays
 	
-
-
 or
 
 	sea
-	
-
