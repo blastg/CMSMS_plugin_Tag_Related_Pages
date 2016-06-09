@@ -119,7 +119,7 @@ function smarty_cms_help_function_tag_related_pages() {
 	<h3>How to use:</h3>
 	<p>Copy <b>function.tag_related_pages.php</b> file to <b>"/plugins"</b> directory of your site.
 	<br /><br />
-	Then, in your main theme, add this instruction:</p>
+	Then, in your main template, add this instruction:</p>
 
 	<pre>{$tag="{content block='tag' oneline='true' wysiwyg='false'}" scope=global}</pre>
 	</p>
