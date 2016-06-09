@@ -21,6 +21,8 @@ function smarty_function_tag_related_pages($params, &$smarty)
 	$content_props_table="content_props";
 	$content_table="content";
 	$db = cmsms()->GetDb();
+	$config = cmsms()->GetConfig();
+	$cms_db_prefix = $config['db_prefix'];
 
 	$contentobj = cms_utils::get_current_content();
 	$page_id = $contentobj->ID();
@@ -41,17 +43,17 @@ function smarty_function_tag_related_pages($params, &$smarty)
 	//-------------------------------------------------------------------------------------
 
 	$q = "SELECT ";
-	$q.= cms_db_prefix() .  $content_props_table . ".content_id";
+	$q.= $cms_db_prefix .  $content_props_table . ".content_id";
 	$q.= ", ";
-	$q.= cms_db_prefix() .  $content_props_table . ".content";
+	$q.= $cms_db_prefix .  $content_props_table . ".content";
 	$q.= " FROM ";
-	$q.= cms_db_prefix(). $content_props_table;
+	$q.= $cms_db_prefix. $content_props_table;
 	$q.= " WHERE prop_name='tag' ";
 	$q.= " AND ";
 	$q.= " ( ";
 	foreach($tags as $tag)
 	{
-		$q.= cms_db_prefix() .  $content_props_table . ".content";
+		$q.= $cms_db_prefix .  $content_props_table . ".content";
 		$q.= " LIKE '%";
 		$q.= $tag;
 		$q.= "%'";
@@ -60,7 +62,7 @@ function smarty_function_tag_related_pages($params, &$smarty)
 	$q=substr_replace($q, "", -4);
 	$q.= " ) ";
 	$q.= " AND ";
-	$q.= cms_db_prefix() .  $content_props_table . ".content_id";
+	$q.= $cms_db_prefix .  $content_props_table . ".content_id";
 	$q.= " <> " . $page_id;
 	$q.= ";";
 	//echo $q . "<br />";
@@ -79,13 +81,13 @@ function smarty_function_tag_related_pages($params, &$smarty)
 	//-------------------------------------------------------------------------------------
 
 		$q = "SELECT ";
-		$q.= cms_db_prefix() .  $content_table . ".content_alias";
+		$q.= $cms_db_prefix .  $content_table . ".content_alias";
 		$q.= ", ";
-		$q.= cms_db_prefix() .  $content_table . ".active";
+		$q.= $cms_db_prefix .  $content_table . ".active";
 		$q.= " FROM ";
-		$q.= cms_db_prefix()  .  $content_table;
+		$q.= $cms_db_prefix  .  $content_table;
 		$q.= " WHERE ";
-		$q.= cms_db_prefix()  .$content_table . ".active=1";
+		$q.= $cms_db_prefix  .$content_table . ".active=1";
 		$q.= " AND (";
 	
 	foreach($related_pages_ids as $related_page_id)
@@ -117,11 +119,11 @@ function smarty_cms_help_function_tag_related_pages() {
 	<h3>How to use:</h3>
 	<p>Copy <b>function.tag_related_pages.php</b> file to <b>"/plugins"</b> directory of your site.
 	<br /><br />
-	Then, in your main template, add this instruction:</p>
+	Then, in your main theme, add this instruction:</p>
 
 	<pre>{$tag="{content block='tag' oneline='true' wysiwyg='false'}" scope=global}</pre>
 	</p>
-	<p>Create a new <b>content block</b> named <b>related_pages</b> (Layout - Design Manager - Templates - Create a new Template - Core::Generic) with this content (customize according you preferences):</p>
+	<p>Create a new <b>content block</b> named <b>related_pages</b> (Layout - Design Manager - Templates - Create a new Template - Core::Generic) with this content (customize according your preferences):</p>
 	<pre>
 	{tag_related_pages tag="{page_attr key="tag"}"}
 	{if $related_pages ne ''}
